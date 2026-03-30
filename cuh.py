@@ -2,10 +2,10 @@ from ultralytics import YOLO
 import cv2
 import ctypes
 
-# get screen size (once, outside loop)
-user32 = ctypes.windll.user32
-screen_w = user32.GetSystemMetrics(0)
-screen_h = user32.GetSystemMetrics(1)
+# # get screen size (once, outside loop)
+# user32 = ctypes.windll.user32
+# screen_w = user32.GetSystemMetrics(0)
+# screen_h = user32.GetSystemMetrics(1)
 
 
 model = YOLO("yolov10l.pt") #choose model n/s/m/b/l/x
@@ -16,10 +16,10 @@ while True:
     ret, frame = cap.read()
     if not ret:
         break
-    h, w = frame.shape[:2]
-    if w > screen_w or h > screen_h:
-        scale = min(screen_w / w, screen_h / h)
-        frame = cv2.resize(frame, (int(w * scale), int(h * scale))) # for resize to fit the display to see
+    # h, w = frame.shape[:2]
+    # if w > screen_w or h > screen_h:
+    #     scale = min(screen_w / w, screen_h / h)
+    #     frame = cv2.resize(frame, (int(w * scale), int(h * scale))) # for resize to fit the display to see
 
     results = model.track(
         frame,

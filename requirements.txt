@@ -1,1 +1,1 @@
-python==3.13.12,
+ultralytics==8.4.31
